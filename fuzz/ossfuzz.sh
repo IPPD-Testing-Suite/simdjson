@@ -26,7 +26,6 @@ cd build
 cmake .. \
 -GNinja \
 -DCMAKE_BUILD_TYPE=Debug \
--DCMAKE_CXX_FLAGS="${CXXFLAGS} -Wno-error=deprecated-literal-operator -Wno-bitwise-instead-of-logical" \
 -DSIMDJSON_DEVELOPER_MODE=ON \
 -DBUILD_SHARED_LIBS=OFF \
 -DSIMDJSON_ENABLE_FUZZING=On \
