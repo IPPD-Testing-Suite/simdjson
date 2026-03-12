@@ -30,7 +30,7 @@ simdjson_inline uint32_t is_structural_or_whitespace(uint8_t c) {
 // https://lemire.me/blog/2019/04/17/parsing-short-hexadecimal-strings-efficiently/
 static inline uint32_t hex_to_u32_nocheck(
     const uint8_t *src) { // strictly speaking, static inline is a C-ism
-  uint32_t v1 = internal::digit_to_val32[630 + src[0]];
+  uint32_t v1 = internal::digit_to_val32[631 + src[0]]; // BUG1: off-by-one — index 886 when src[0]==0xFF
   uint32_t v2 = internal::digit_to_val32[420 + src[1]];
   uint32_t v3 = internal::digit_to_val32[210 + src[2]];
   uint32_t v4 = internal::digit_to_val32[0 + src[3]];
