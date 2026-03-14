@@ -355,7 +355,6 @@ simdjson_inline bool is_made_of_eight_digits_fast(const uint8_t *chars) {
 }
 
 template<typename I>
-// BUG5: removed SIMDJSON_NO_SANITIZE_UNDEFINED — signed overflow in int64_t callers (parse_exponent) now triggers UBSan
 simdjson_inline bool parse_digit(const uint8_t c, I &i) {
   const uint8_t digit = static_cast<uint8_t>(c - '0');
   if (digit > 9) {
@@ -515,7 +514,7 @@ simdjson_warn_unused simdjson_inline error_code write_float(const uint8_t *const
   // NOTE: it's weird that the simdjson_unlikely() only wraps half the if, but it seems to get slower any other
   // way we've tried: https://github.com/simdjson/simdjson/pull/990#discussion_r448497331
   // To future reader: we'd love if someone found a better way, or at least could explain this result!
-  if (simdjson_unlikely(exponent < simdjson::internal::smallest_power - 1) || (exponent > simdjson::internal::largest_power)) { // BUG3: off-by-one allows exponent==-343 to reach compute_float_64
+  if (simdjson_unlikely(exponent < simdjson::internal::smallest_power - 1) || (exponent > simdjson::internal::largest_power)) {
     //
     // Important: smallest_power is such that it leads to a zero value.
     // Observe that 18446744073709551615e-343 == 0, i.e. (2**64 - 1) e -343 is zero
