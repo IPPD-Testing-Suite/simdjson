@@ -67,6 +67,11 @@ if(SIMDJSON_ENABLE_FUZZING)
   implement_fuzzer(fuzz_parser)
   implement_fuzzer(fuzz_print_json)
   implement_fuzzer(fuzz_utf8)            # utf8 verification, compares across implementations
+  implement_fuzzer(fuzz_bug_exponent_ubsan)
+  implement_fuzzer(fuzz_bug_float_bounds)
+  implement_fuzzer(fuzz_bug_string_overflow)
+  implement_fuzzer(fuzz_bug_tape_overflow)
+  implement_fuzzer(fuzz_bug_unicode)
 
   # to be able to get a list of all fuzzers from within a script
   add_custom_target(print_all_fuzzernames
