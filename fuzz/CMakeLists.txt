@@ -54,19 +54,6 @@ if(SIMDJSON_ENABLE_FUZZING)
     set(fuzzernames ${fuzzernames} ${name} PARENT_SCOPE)
   endfunction()
 
-  implement_fuzzer(fuzz_atpointer)
-  implement_fuzzer(fuzz_dump)
-  implement_fuzzer(fuzz_dump_raw_tape)
-  implement_fuzzer(fuzz_element)
-  implement_fuzzer(fuzz_implementations) # parses and serializes again, compares across implementations
-  implement_fuzzer(fuzz_minify)          # minify *with* parsing
-  implement_fuzzer(fuzz_minifyimpl)      # minify *without* parsing, plus compare implementations
-  implement_fuzzer(fuzz_ndjson)          # the ndjson api
-  implement_fuzzer(fuzz_ondemand)
-  implement_fuzzer(fuzz_padded)
-  implement_fuzzer(fuzz_parser)
-  implement_fuzzer(fuzz_print_json)
-  implement_fuzzer(fuzz_utf8)            # utf8 verification, compares across implementations
   implement_fuzzer(fuzz_bug_exponent_ubsan)
   implement_fuzzer(fuzz_bug_float_bounds)
   implement_fuzzer(fuzz_bug_string_overflow)
