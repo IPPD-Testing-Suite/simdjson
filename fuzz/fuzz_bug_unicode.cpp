@@ -19,11 +19,11 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     // Walk strings to force unicode unescape code path
     if (elem.is_string()) {
       std::string_view sv;
-      elem.get_string().get(sv);
+      if (!elem.get_string().get(sv)) { (void)sv; }
     } else if (elem.is_array()) {
       for (auto e : elem.get_array()) {
         std::string_view sv;
-        e.get_string().get(sv);
+        if (!e.get_string().get(sv)) { (void)sv; }
       }
     }
   }

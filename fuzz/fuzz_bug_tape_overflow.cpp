@@ -22,7 +22,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     // Trigger tape traversal
     if (elem.is_array()) {
       simdjson::dom::array arr;
-      elem.get_array().get(arr);
+      if (!elem.get_array().get(arr)) { (void)arr; }
     }
   }
   return 0;
