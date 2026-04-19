@@ -3,10 +3,12 @@
 !Makefile
 !amalgamate.py
 !benchmark
+!build.sh
 !dependencies
 !include
 !jsonchecker
 !jsonexamples
+!run_tests.sh
 !scripts
 !singleheader
 !src
